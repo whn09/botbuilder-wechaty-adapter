@@ -6,6 +6,8 @@ import {
 }                 from 'botbuilder'
 import { log }    from 'wechaty'
 
+log.level('verbose')
+
 import { WechatyAdapter } from '../src/wechaty-adapter'
 
 export class EchoBot {

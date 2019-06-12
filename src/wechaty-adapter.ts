@@ -50,7 +50,8 @@ export class WechatyAdapter extends BotAdapter {
     })
     .on('scan', (qrcode, status) => {
       if (!/201|200/.test(String(status))) {
-        QrcodeTerminal.generate(qrcode, { small: true })
+        // QrcodeTerminal.generate(qrcode, { small: true })
+        QrcodeTerminal.generate(qrcode)
         log.info(`${qrcode}\n[${status}] Scan QR Code above url to log in: `)
       }
     })
@@ -105,14 +106,14 @@ export class WechatyAdapter extends BotAdapter {
       throw new Error('WechatyAdapter processMessage() discard message without a from contact: ' + msg)
     }
 
-    if (  msg.self()
+    /*if (  msg.self()
         || msg.room()
         || (from && from.type() !== this.wechaty.Contact.Type.Personal)
         || (msg.type() !== this.wechaty.Message.Type.Text)
     ) {
       log.verbose('WechatyAdapter', 'buildActivity(%s) message from self or room or not text, return null', msg)
       return null
-    }
+    }*/
 
     const botUser = this.wechaty.userSelf()
     const room = msg.room()
